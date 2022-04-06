@@ -1,23 +1,47 @@
-import logo from './logo.svg';
+
 import './App.css';
+
+function Header(props) {
+  console.log(props);
+  return (
+    <header>
+      <h1>{props.name}</h1>
+    </header>
+  )
+}
+
+function Main(props){
+  return(
+    <section>
+      <p>we serve a lot of {props.adjective} in here</p> 
+      <ul>
+        {props.dishes.map((dish) => <li>{dish}</li>)}
+      </ul>
+    </section>
+  )
+}
+
+function Footer(props){
+  return(
+    <footer>
+      <h2>Copyright {props.year}</h2>
+    </footer>
+  )
+}
+
+const dishes = [
+  'stuf a',
+  'stuff b',
+  'stuff c'
+]
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header name="chicky chicky"/>
+      <Main adjective="wagons wagons wagons" dishes={dishes}/>
+      <Footer year={new Date().getFullYear()}/>  
     </div>
   );
 }
